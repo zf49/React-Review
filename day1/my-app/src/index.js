@@ -4,7 +4,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './01-base/01-classComponent'
+import App from './01-base/04-component_style'
 
 ReactDOM.render(<App/>,document.getElementById("root"))
 
