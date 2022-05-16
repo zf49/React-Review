@@ -1,17 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+/**
+ * index.js is the entery of whole project
+ */
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './01-base/01-classComponent'
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(<App/>,document.getElementById("root"))
+
+
+// ReactDOM.render(React.createElement("div",{
+//    id:"aaa",
+//    className:"bbb",
+
+// },"1111111"),document.getElementById("root"))
+
+
+// this could be say it is jsx
+// jsx == js + xml
