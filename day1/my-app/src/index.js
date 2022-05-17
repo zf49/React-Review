@@ -4,7 +4,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './01-base/06-binding02'
+import App from './01-base/08-state.js'
 
 ReactDOM.render(<App/>,document.getElementById("root"))
 
