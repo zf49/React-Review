@@ -31,9 +31,9 @@ export default class App extends Component {
                 <div>
                     <ul>{
 
-                        // this.state.list.map(item=><li>${item}</li>)
+                        this.state.list.map(item=><li>{item}</li>)
 
-                        this.mapArrary()
+                        // this.mapArrary()
 
                     }</ul>
                 </div>

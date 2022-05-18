@@ -4,7 +4,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './01-base/09-render_of_Arrary.js'
+import App from './01-base/10-practice-todolist.js'
 
 ReactDOM.render(<App/>,document.getElementById("root"))
 
