@@ -2,39 +2,54 @@ import React, { Component } from 'react'
 
 export default class App extends Component {
 
-    state = {
+
+constructor(){
+    super()
+ this.state = {
         text:"Like",
-        show:true
-
+        show:true,
+        myname:"Chirs",
+        test1:"Chris",
+        flag:true
     }
+}
 
 
+    // state = {
+    //     text:"Like",
+    //     show:true
+
+    // }
 
     render() {
         return (
             <div>
-                <h1>Welcome React review</h1>
+                <h1>{this.state.myname}</h1>
 
                 <button onClick={()=>{
 
                         this.setState({
-                            show:!this.state.show
+                            show:!this.state.show,
+                            myname:"Zhifang Wang"  
                         })
-
-                        if(this.state.show){
-                            console.log("Like")
-                        }else{
-                            console.log("unLike")
-                        }
-
-
-
                 }}>{this.state.show?"Like":"unlike"}</button>
+<br></br>
+<hr></hr>
+            
+<h1>Name: {this.state.flag?"Chris":"Zhifang Wang"}</h1>
+
+<button onClick={
+    ()=>{
+
+        this.setState({
+            flag:!this.state.flag
+        })
+
+    }
+}>change name</button>
 
 
-
-
-            </div>
+</div>
         )
     }
 }
