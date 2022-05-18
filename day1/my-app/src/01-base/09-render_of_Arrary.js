@@ -17,6 +17,10 @@ export default class App extends Component {
     }
 
 
+    // set key value is for reuse of list, inprove the performance,
+    // ideal key value is unique value, liek index of the list
+    // if we do not need to CRUD list or reset the list, we can set key vlaue to index
+
 
     render() {
         return (
