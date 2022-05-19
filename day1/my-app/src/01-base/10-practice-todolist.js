@@ -35,12 +35,11 @@ export default class App extends Component {
                         console.log(this.state.content)
                         }}>input</button>
 
-                <button>delete</button>
                 <hr></hr>
 
                 <div>
                     <ul>{     
-                       this.state.content.map((item,index)=>{return <li key={index}>{item}</li>})
+                       this.state.content.map((item,index)=>{return <li key={index}>{item}<button>delete</button></li>})
                     }
                     </ul>
                 </div>
