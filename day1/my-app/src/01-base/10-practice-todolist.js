@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import './css/01-index.css'
+
+
 
 export default class App extends Component {
 
@@ -20,12 +23,16 @@ export default class App extends Component {
 
         let copyList = [...this.state.content]
 
+        if (newNum != ''){
+        let copyList = [...this.state.content]
         copyList.push(newNum)
 
         this.setState({
             content:copyList
         })
-
+        }else{
+            alert('cannot be null')
+        }
 
         // clear the input value
         this.inputValue.current.value = ""
@@ -73,7 +80,11 @@ export default class App extends Component {
 
                 <div>
                     <ul>{     
-                       this.state.content.map((item,index)=>{return <li key={index}>{item}<button onClick={
+                       this.state.content.map((item,index)=>{return <li key={index}>
+                          
+                           {item}
+                       
+                       <button onClick={
                            ()=>{
                                 this.delete(index)
                            }  
@@ -83,7 +94,14 @@ export default class App extends Component {
                 </div>
                 
                 {/* conditional rendering */}
-                {this.state.content.length === 0?<div>No content here</div>:null}
+                {/* 1.  */}
+                {/* {this.state.content.length === 0?<div>No content here</div>:null} */}
+                {/* 2. */}
+                {/* {this.state.content.length === 0&&<div>No content here</div>} */}
+                
+                 {/* 3. */}
+                 {<div className={this.state.content.length === 0?'':'content'}>No content here</div>}
+
 
             </div>
         )

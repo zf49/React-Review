@@ -7,3 +7,7 @@
     background: hotpink;
     font-size: 5em;
 }
+
+.content{
+    display:none;
+}
