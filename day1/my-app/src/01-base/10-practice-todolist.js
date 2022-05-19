@@ -25,6 +25,13 @@ export default class App extends Component {
         this.setState({
             content:copyList
         })
+
+
+        // clear the input value
+        this.inputValue.current.value = ""
+
+
+
     }
 
 
@@ -75,6 +82,8 @@ export default class App extends Component {
                     </ul>
                 </div>
                 
+                {/* conditional rendering */}
+                {this.state.content.length === 0?<div>No content here</div>:null}
 
             </div>
         )
