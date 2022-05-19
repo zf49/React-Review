@@ -15,6 +15,7 @@ export default class App extends Component {
         var newNum = this.inputValue.current.value
 
         let copyList = [...this.state.content]
+        // let copyList = newNum.slice();
 
         copyList.push(newNum)
 
@@ -33,11 +34,13 @@ export default class App extends Component {
                         this.inputContent()
                         console.log(this.state.content)
                         }}>input</button>
+
+                <button>delete</button>
                 <hr></hr>
 
                 <div>
                     <ul>{     
-                       this.state.content.map(item=><li>{item}</li>)
+                       this.state.content.map((item,index)=>{return <li key={index}>{item}</li>})
                     }
                     </ul>
                 </div>
