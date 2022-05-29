@@ -18,8 +18,8 @@ export default class App extends Component {
             text:"cinema"
         },
         {
-        id:3,
-        text:"center"
+            id:3,
+            text:"center"
         }
     ],
     current:-1

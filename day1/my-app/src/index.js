@@ -4,7 +4,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './01-base/12-tab_of_camera.js'
+import App from './01-base/14-betterScroll.js'
 
 ReactDOM.render(<App/>,document.getElementById("root"))
 

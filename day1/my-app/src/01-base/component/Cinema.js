@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, createRef } from 'react'
 
 import axios from 'axios'
 
@@ -13,7 +13,8 @@ export default class Cinema extends Component {
 
 
         this.state={
-            cinemaList:[]
+            cinemaList:[],
+            bakCinemaList:[]
         }
 
 
@@ -30,17 +31,36 @@ export default class Cinema extends Component {
         }).then(res=>{
 
            this.setState({
-               cinemaList:res.data.data.cinemas
+               cinemaList:res.data.data.cinemas,
+               bakCinemaList:res.data.data.cinemas
            })
-
+            console.log(this.state.cinemaList)
         })
     }
 
 
     
 
+    handleInput = (event)=>{
 
-       
+
+    
+
+        console.log(event.target.value)
+
+        var newList = this.state.bakCinemaList.filter(item=>item.name.toUpperCase().includes(event.target.value.toUpperCase())||
+        item.address.toUpperCase().includes(event.target.value.toUpperCase())
+        )
+
+        // console.log(newList)
+
+
+        this.setState({
+            cinemaList : newList
+        })
+
+
+    }
 
 
 
@@ -48,6 +68,11 @@ export default class Cinema extends Component {
         return (
             <div>
                 
+                <input onInput={
+                    this.handleInput
+                }></input>
+
+
                 {
                     this.state.cinemaList.map(item=> 
                                <dl>
@@ -64,3 +89,13 @@ export default class Cinema extends Component {
         )
     }
 }
+
+
+var arr =["aaa","abb","ccbc"]
+
+
+var newArr = arr.filter(item=>item.includes("a"))
+
+console.log(newArr)
+
+
