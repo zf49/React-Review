@@ -4,7 +4,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './01-base/16-props.js'
+import App from './01-base/18-propsVsState.js'
 
 ReactDOM.render(<App/>,document.getElementById("root"))
 
