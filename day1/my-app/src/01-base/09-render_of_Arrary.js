@@ -11,10 +11,10 @@ export default class App extends Component {
     }
 
 
-    mapArrary(){
-        let li = this.state.list.map((item,num)=>{return <li key={num}>{item+"---"+num}</li>})
-        return li
-    }
+    // mapArrary(){
+    //     let li = this.state.list.map((item,num)=>{return <li key={num}>{item+"---"+num}</li>})
+    //     return li
+    // }
 
 
     // set key value is for reuse of list, inprove the performance,
@@ -25,17 +25,22 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                <input type="text"></input>
-                <button>show</button>
+                {/* <input type="text"></input>
+                <button>show</button> */}
 
                 <div>
-                    <ul>{
+                    {/* <ul>{
 
                         this.state.list.map(item=><li>{item}</li>)
 
                         // this.mapArrary()
 
-                    }</ul>
+                    }</ul> */}
+
+                    <ul>
+                        {this.state.list.map((item,index)=>{return <li key={index}>{item}</li>})}
+                    </ul>
+
                 </div>
 
 
@@ -48,8 +53,8 @@ export default class App extends Component {
 
 
 
-var list = ["111","222","333"];
+// var list = ["111","222","333"];
 
-var newlist = list.map(item=>`<li>${item}</li>`)
+// var newlist = list.map(item=>`<li>${item}</li>`)
 
-console.log(newlist.join(""))
+// console.log(newlist.join(""))

@@ -9,7 +9,7 @@ import React, { Component } from 'react'
 export default class App extends Component {
 
     add1 = ()=>{
-        console.log("add1",this.myref.current
+        console.log(this.myref.current
         .value)
 
     }
