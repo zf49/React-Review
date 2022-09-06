@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 export default class App extends Component {
 
     state={
-        count:1
+        count:1,
+        test:0
     }
 
 
@@ -51,6 +52,17 @@ export default class App extends Component {
 
     }
 
+
+
+    jia1 = ()=>{
+        let a = this.state.test+1;
+        console.log(a)
+        this.setState({
+            test:a
+        })
+
+    }
+
     render() {
         return (
             <div>
@@ -59,6 +71,19 @@ export default class App extends Component {
                 <button onClick={this.addCount}>Add count</button>
 
                 <button onClick={this.addCount2}>Add count222</button>
+
+
+
+            <hr>
+            </hr>
+            <br></br>
+
+            <button onClick={()=>{
+                this.jia1()
+            }}>加一</button>
+            {this.state.test}
+
+
 
             </div>
         )

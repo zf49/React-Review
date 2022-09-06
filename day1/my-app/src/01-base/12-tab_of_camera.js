@@ -1,85 +1,61 @@
 import React, { Component } from 'react'
+
 import './css/02.css'
 
-import Film from './component/Film'
-import Center from './component/Center'
-import Cinema from './component/Cinema'
+import Film from './component/Film.js'
+import Cinema from './component/Cinema.js'
+import Mine from './component/Mine.js'
+
 
 export default class App extends Component {
-
-    state={
-        list:[
-        {
-                id:1,
-                text:"film"
-        }, 
-        {
-            id:2,
-            text:"cinema"
-        },
-        {
-            id:3,
-            text:"center"
-        }
-    ],
-    current:-1
-    }
-
-
-    click(index){
     
+    state = {
+        list:[
+            {
+                id:1,
+                text:"Films"
+            },
+            {
+                id:2,
+                text:"Cinemas"
+            },
+            {
+                id:3,
+                text:"Mine"
+            }
+        ],
+        current:0
+    } 
+    
+    
+    changeBottomTab = (index)=>{
+        let currentNum = index;
 
-        var c =index;
 
+        console.log(currentNum)
 
         this.setState({
-            current : c
+            current:currentNum
         })
 
-    }
-
-    which(){
-
-        switch(this.state.current){
-            case 0:
-                return <Film></Film>
-            case 1:
-                return<Cinema></Cinema>
-            case 2:
-                return<Center></Center>
-            default:
-                return null
-        }
 
     }
-
-
+    
+    
     render() {
         return (
             <div>
+                {this.state.current===0&&<Film></Film>}
+                {this.state.current===1&&<Cinema></Cinema>}
+                {this.state.current===2&&<Mine></Mine>}
 
-            {/* {this.state.current ===0 && <Film></Film>}
-            {this.state.current ===1 && <Cinema></Cinema>}
-            {this.state.current ===2 && <Center></Center>} */}
-
-            {
-                this.which()
-            }
-
-
-
-
-
-
-                <ul>{this.state.list.map((item,index)=><li className={this.state.current===index?'active':''} key={item.id}
-                onClick={
-                    ()=>{
-                       this.click(index) }       
-                }
-                
-                
-                >{item.text}</li>)}
-                </ul> 
+                <ul>
+                {this.state.list.map((item,index) =>{
+                    return <li key={item.id} className={this.state.current===index?"active":""} onClick={()=>{
+                        this.changeBottomTab(index);
+                    }}>{item.text}</li>
+                })}
+                </ul>
             </div>
         )
     }

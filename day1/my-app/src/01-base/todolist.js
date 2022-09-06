@@ -16,6 +16,10 @@ export default class todolist extends Component {
             list: newList
         })
 
+        // 默认输入为空
+        this.inputRef.current.value = ""
+
+
     }
 
 
@@ -25,6 +29,8 @@ export default class todolist extends Component {
 
         let deltetedList = this.state.list.slice();
         
+        // let deltetedList = this.state.list.concat();
+
         deltetedList.splice(index,1);
 
         this.setState({
@@ -77,6 +83,9 @@ export default class todolist extends Component {
                    </li>})}
                 </ul>
 
+                {this.state.list.length===0?<div>暂无待办事项</div>:null}
+
+                   
 
             </div>
         )

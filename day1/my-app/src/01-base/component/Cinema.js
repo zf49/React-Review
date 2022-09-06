@@ -1,4 +1,4 @@
-import React, { Component, createRef } from 'react'
+import React, { Component } from 'react'
 
 import axios from 'axios'
 
@@ -6,96 +6,77 @@ import axios from 'axios'
 
 export default class Cinema extends Component {
 
-    constructor(){
-        
 
-        super()
+   
 
-
+    constructor() {
+        super();
+    
         this.state={
             cinemaList:[],
-            bakCinemaList:[]
-        }
+            backUp:[]
+        };
 
 
-        // request data
 
-        // axios.get("https://m.maizuo.com/gateway?cityId=110100&ticketFlag=1&k=9286549").then(res=>{console.log(res)}).catch(err=>{console.log(err)})
         axios({
-            url:"https://m.maizuo.com/gateway?cityId=110100&ticketFlag=1&k=9286549",
+            url:"https://m.maizuo.com/gateway?cityId=440300&ticketFlag=1&k=983941",
             method:'get',
             headers:{
-                'X-Client-Info': '{"a":"3000","ch":"1002","v":"5.2.0","e":"1653143769202670916763649","bc":"110100"}',
+                'X-Client-Info': '{"a":"3000","ch":"1002","v":"5.2.1","e":"16623691791635729704747009"}',
                 'X-Host': 'mall.film-ticket.cinema.list'
             }
-        }).then(res=>{
+        }).then((res)=>{
+             
+            this.setState({
+                cinemaList:res.data.data.cinemas,
+                backUp:res.data.data.cinemas
+            })
 
-           this.setState({
-               cinemaList:res.data.data.cinemas,
-               bakCinemaList:res.data.data.cinemas
-           })
             console.log(this.state.cinemaList)
         })
+
+
+
     }
-
-
     
 
-    handleInput = (event)=>{
-
-
-    
-
-        console.log(event.target.value)
-
-        var newList = this.state.bakCinemaList.filter(item=>item.name.toUpperCase().includes(event.target.value.toUpperCase())||
-        item.address.toUpperCase().includes(event.target.value.toUpperCase())
-        )
-
-        // console.log(newList)
+    onInput = (event)=>{
+        let inputValue = event.target.value;
+        let newList = this.state.backUp;
+        
+       let a =  newList.filter(item=>item.name.toUpperCase().includes(inputValue.toUpperCase()))
 
 
         this.setState({
-            cinemaList : newList
-        })
-
-
+            cinemaList:a
+        })        
+       
     }
 
-
+    
 
     render() {
         return (
             <div>
                 
-                <input onInput={
-                    this.handleInput
-                }></input>
+                <input onInput={(event)=>{
+                    this.onInput(event);
+                }}></input>
 
-
-                {
-                    this.state.cinemaList.map(item=> 
-                               <dl>
-                                   <dt>{item.name}</dt>
-                                   <dt>{item.address}</dt>
-                                   <hr>
-                                   </hr>
-                                </dl>
-                    )
-                
+                {this.state.cinemaList.map(item=>
+                <dl key={item.cinmeaID}>
+                    <dt>{item.name}</dt>
+                    <dd>{item.address}</dd>
+                    <hr></hr>
+                </dl>    
+                )
                 }
+    
             
             </div>
         )
     }
 }
-
-
-var arr =["aaa","abb","ccbc"]
-
-
-var newArr = arr.filter(item=>item.includes("a"))
-
-console.log(newArr)
 
 
