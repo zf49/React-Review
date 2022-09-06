@@ -24,7 +24,7 @@ export default class App extends Component {
                             console.log(this.state.count)
                         })
         
-    
+//setstate 处在同步逻辑中，异步更新状态， 处在异步逻辑中，同步更新状态
                
         },0)
 
@@ -58,7 +58,7 @@ export default class App extends Component {
         let a = this.state.test+1;
         console.log(a)
         this.setState({
-            test:a
+            test: a
         })
 
     }
