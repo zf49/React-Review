@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import propty from 'prop-types'
 console.log(propty)
 
+
+// 
+
 export default class Navbar extends Component {
 
     static propTypes = {
@@ -16,6 +19,10 @@ export default class Navbar extends Component {
         leftshow : true
     }
 
+
+   
+
+
     render() {
 
         console.log(this.props)
@@ -28,6 +35,7 @@ export default class Navbar extends Component {
 
 
                 Navbar-{title}
+
                 <button>Home</button>
 
             </div>

@@ -8,9 +8,7 @@ export default class App extends Component {
             <div>
                 <Navbar title="导航"/>
 
-
-
-                <Sidebar bg="yellow" position="left"/>
+                <Sidebar bg="red" position="left"/>
             </div>
         )
     }

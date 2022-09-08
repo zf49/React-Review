@@ -26,13 +26,13 @@ export default class App extends Component {
 
               <div>
               <h2>列表</h2>
-                  <Navbar title='列表'  />
+                  <Navbar title='列表' leftshow={true} />
               </div>
 
               <div>
               <h2>购物车</h2>
 
-                  <Navbar title='购物车'  />
+                  <Navbar title='购物车' leftshow={true} />
               </div>
               
               <Navbar title={obj.title} leftshow = {obj.leftshow}  />

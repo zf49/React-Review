@@ -3,8 +3,6 @@ import React from 'react'
 import './../css/sidebarCss.css'
 export default function Sidebar(props) {
 
-
-
     let {bg,position} = props
 
     console.log(position)
@@ -52,3 +50,5 @@ export default function Sidebar(props) {
         </div>
     )
 }
+
+

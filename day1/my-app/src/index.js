@@ -4,7 +4,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './01-base/16-props'
+import App from './01-base/19-test'
 
 ReactDOM.render(<App/>,document.getElementById("root"))
 
