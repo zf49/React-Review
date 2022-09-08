@@ -4,7 +4,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './01-base/19-test'
+import App from './01-base/22-controlled-todolist'
 
 ReactDOM.render(<App/>,document.getElementById("root"))
 
