@@ -4,7 +4,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './02-advanced/01-子传父'
+import App from './02-advanced/02-非受控卖座'
 
 ReactDOM.render(<App/>,document.getElementById("root"))
 
