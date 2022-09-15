@@ -17,18 +17,19 @@ export default class TabBar extends Component {
                 text:"Mine"
             }
         ],
-        current:0
+        current:this.props.defaultValue
     }
+
     changeBottomTab = (index)=>{
         let currentNum = index;
 
 
-        console.log(currentNum)
+        console.log("子组件"+currentNum)
 
         this.setState({
             current:currentNum
         })
-
+        this.props.event(currentNum)
 
     }
     render() {

@@ -7,23 +7,12 @@ import Cinema from './component/Cinema.js'
 import Mine from './component/Mine.js'
 import TopBar from './component/TopBat'
 import TabBar from './component/TabBar'
+
+
 export default class App extends Component {
     
     state = {
-        list:[
-            {
-                id:1,
-                text:"Films"
-            },
-            {
-                id:2,
-                text:"Cinemas"
-            },
-            {
-                id:3,
-                text:"Mine"
-            }
-        ],
+        
         current:0
     } 
     
@@ -46,14 +35,29 @@ export default class App extends Component {
         return (
             <div>
 
-                <TopBar></TopBar>
+                <TopBar center={
+                    ()=>{
+                        console.log("父组件topbar"+"告诉tabbar切换");
+
+                        this.setState({
+                            current:2
+                        })
+                    }
+                }></TopBar>
 
 
                 {this.state.current===0&&<Film></Film>}
                 {this.state.current===1&&<Cinema></Cinema>}
                 {this.state.current===2&&<Mine></Mine>}
 
-                <TabBar></TabBar>
+                <TabBar event={
+                    (currentNum)=>{
+                     console.log("父组件定义"+currentNum);
+                     this.setState({
+                         current:currentNum
+                     })
+                    }
+                } defaultValue={this.state.current}></TabBar>
             </div>
         )
     }
