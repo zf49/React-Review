@@ -12,7 +12,6 @@ import TabBar from './component/TabBar'
 export default class App extends Component {
     
     state = {
-        
         current:0
     } 
     
