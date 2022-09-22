@@ -4,7 +4,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './02-advanced/06-中间人模式'
+import App from './02-advanced/09-context'
 
 ReactDOM.render(<App/>,document.getElementById("root"))
 

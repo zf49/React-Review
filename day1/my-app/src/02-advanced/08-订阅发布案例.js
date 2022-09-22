@@ -1,5 +1,24 @@
 import axios from 'axios';
 import React, { Component } from 'react'
+//调度中心
+var bus = {   
+    list:[],
+    //订阅
+    subscribe(callback){
+        // console.log(callback)
+        this.list.push(callback)
+    },
+    //发布
+    publish(text){
+        //遍历所有的列表
+        // console.log(this.list)
+        this.list.forEach(callback=>{
+            callback(text)
+        })
+    }
+}
+
+
 
 export default class App extends Component {
 
@@ -8,8 +27,7 @@ export default class App extends Component {
         super();
 
         this.state= {
-            filmList:[],
-            info:""
+            filmList:[]
         }
 
 
@@ -66,8 +84,12 @@ class FilmItem extends Component{
 
        return <div onClick={
            ()=>{
-            // console.log(lowPrice+"---"+phone)
-            this.props.onEvent(lowPrice+"---"+phone)
+            console.log(lowPrice+"---"+phone)
+
+            bus.publish(lowPrice+"---"+phone)
+
+
+            // this.props.onEvent(lowPrice+"---"+phone)
            }
        }> 
            <ul>
@@ -83,6 +105,25 @@ class FilmItem extends Component{
 }
 
 class FilmDetail extends Component{
+
+    constructor(){
+        super()
+        bus.subscribe((info)=>{
+            console.log("我再filmdetail中定义",info)
+
+            this.setState({
+                info:info
+            })
+
+
+        })
+
+        this.state={
+            info:""
+        }
+
+    }
+
     render(){
 
     
@@ -96,7 +137,8 @@ class FilmDetail extends Component{
                "height":"200px"
            }
        }>
-           {this.props.info}
+           {this.state.info}
+           {/* filmdetail */}
        </div>
     }  
 }
