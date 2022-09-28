@@ -4,7 +4,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './02-advanced/14-生命周期-更新'
+import App from './02-advanced/17-生命周期运行阶段3'
 
 ReactDOM.render(<App/>,document.getElementById("root"))
 
