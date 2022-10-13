@@ -13,7 +13,6 @@ export default function Films() {
                 background:"yellow",
             }}>carousel</div>
 
-
             <ul>
                 <li><NavLink to='/films/nowplaying' activeClassName="chrisactive">正在热映</NavLink></li>
                 <li><NavLink to='/films/comingsoon' activeClassName="chrisactive">即将上映</NavLink></li>
