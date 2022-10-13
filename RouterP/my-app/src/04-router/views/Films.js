@@ -15,8 +15,8 @@ export default function Films() {
 
 
             <ul>
-                <li><NavLink to='/films/nowplaying'>正在热映</NavLink></li>
-                <li><NavLink to='/films/comingsoon'>即将上映</NavLink></li>
+                <li><NavLink to='/films/nowplaying' activeClassName="chrisactive">正在热映</NavLink></li>
+                <li><NavLink to='/films/comingsoon' activeClassName="chrisactive">即将上映</NavLink></li>
             </ul>
             
             {/* Router config */}
