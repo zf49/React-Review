@@ -1,10 +1,16 @@
 import React from 'react'
-import {HashRouter,Redirect,Route,Switch} from 'react-router-dom'
+import {BrowserRouter as Router,Redirect,Route,Switch} from 'react-router-dom'
 import Films from '../views/Films'
 import Cinemas from '../views/Cinemas'
 import Center from '../views/Center'
 import NotFund from './../views/NotFound'
 import Detail from '../views/Detail'
+import Login from './../views/Login'
+
+function isAuth (){
+    return localStorage.getItem("token")
+}
+
 
 
 
@@ -12,21 +18,27 @@ import Detail from '../views/Detail'
 export default function indexRouter(props) {
     return (
         <div>
-            <HashRouter>
+            <Router>
                 {props.children}
                 <Switch>
                     <Route path='/films' component={Films}></Route>
                     
                     {/* 动态路由 */}
                     <Route path='/detail/:chrisId' component={Detail}></Route>
-
+                    
                     {/* 如果使用history.push()跳转  使用静态路由*/ }
                     {/* <Route path='/detail' component={Detail}></Route> */}
 
                     {/* <Route path="/films/nowplaying" component={NowPlaying}></Route> */}
 
 
+                    <Route path="/center" render={(props)=>{
+                        // console.log(props)
+                      return  isAuth()?<Center {...props}></Center> :<Redirect to="/login"></Redirect>
+                    }}></Route>
 
+
+                    <Route path='/login' component={Login}></Route>
 
                     <Route path='/cinemas' component={Cinemas}></Route>
                     <Route path='/center' component={Center}></Route>
@@ -34,7 +46,7 @@ export default function indexRouter(props) {
                     <Route component={NotFund}></Route>
                 </Switch>
 
-            </HashRouter>
+            </Router>
         </div>
     )
 }

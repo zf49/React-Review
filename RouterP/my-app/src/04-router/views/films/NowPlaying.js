@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { NavLink, useHistory } from 'react-router-dom'
+import { NavLink, useHistory,withRouter } from 'react-router-dom'
 
 
 
@@ -30,19 +30,18 @@ export default function NowPlaying(props) {
         // console.log("#/detail/"+filmId)
         // window.location.href="#/detail/"+filmId
 
-        // Method 1- 动态路由
-        console.log(props)
-        props.history.push(`/detail/${filmId}`)
-        history.push(`/detail/${filmId}`)
+        // Method 1
+        // console.log(props)
+        // props.history.push(`/detail/${filmId}`)
+        // history.push(`/detail/${filmId}`)
 
         // Method 2
-        // history.push({
-        //     pathname:'/detail',
-        //     state:{
-        //         'chrisId':filmId
-        //     }
-        // })
-
+        history.push({
+            pathname:'/detail',
+            state:{
+                'chrisId':filmId
+            }
+        })
         // Method 3
         // history.push({
         //     pathname:'/detail',
@@ -60,18 +59,42 @@ export default function NowPlaying(props) {
     return (
         <div>
             NowPlaying
-            <ul>
-            {nowPlayList.map((item,index)=>{
-               return <li key={item.filmId} onClick={()=>{
-                handleChangePage(item.filmId)
-               }}>
-                {/* <NavLink to={"/detail/" + item.filmId}>{item.name}</NavLink> */}
-
-               {item.name}
-
-               </li>
+            
+            {nowPlayList.map((item)=>{
+               return <FilmItem key={item.filmId} {...item}></FilmItem>
             })}
-            </ul>
+            
         </div>
     )
 }
+
+
+
+
+function FilmItem(props){
+    console.log(props)
+
+    let history = useHistory();
+    
+    let {name,filmId,poster} = props
+
+    return (
+        
+        <li key={filmId} onClick={()=>{
+            console.log(filmId)
+            history.push(`/detail/${filmId}`)
+           }}>
+            {/* <NavLink to={"/detail/" + filmId}>{name}</NavLink> */}
+
+           <img src={poster} style={{
+               width:'100px',
+               height:'100px'
+           }}></img>
+           {name}
+
+
+           </li>
+    )
+}
+
+
