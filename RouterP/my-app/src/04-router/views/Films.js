@@ -12,7 +12,7 @@ export default function Films() {
         <div>
             <div style={{
                 height:"200px",
-                background:"yellow",
+                background:"yellow"
             }}>carousel</div>
 
             <ul>
