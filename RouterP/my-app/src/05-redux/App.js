@@ -11,7 +11,7 @@ import store from './redux/store'
 
 function App() {
 
-  const [isShow, setisShow] = useState(store.getState().show)
+  const [isShow, setisShow] = useState(store.getState())
 
 
 
@@ -19,7 +19,7 @@ function App() {
     store.subscribe(()=>{
       console.log("app 中订阅",store.getState())
 
-      setisShow(store.getState().show)
+      setisShow(store.getState().TabbarReducer.show)
     })
     
   }, [])

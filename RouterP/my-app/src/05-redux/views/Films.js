@@ -27,7 +27,7 @@ export default function Films() {
 
                 <Route path='/films/comingsoon' component={Comingsoon}></Route>
 
-                <Redirect from='/films' to='/films/nowplaying'></Redirect>
+                <Redirect from='/films' to='/films/comingsoon'></Redirect>
             </Switch>
 
 

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 
 import store from './../redux/store'
 
-
+import CityReducer from './../redux/reducer/CityReducer'
 export default function Cinemas(props) {
 
-    const [cityName, setcityName] = useState(store.getState().cityName)
+    const [cityName, setcityName] = useState(store.getState().CityReducer.cityName)
 
 
     // useEffect(() => {

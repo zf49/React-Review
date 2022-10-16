@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { hide, show } from '../redux/actionCreator/TabbarActionCreator'
 import store from './../redux/store'
+import TabbarReducer from './../redux/reducer/TabbarRdeucer'
+
 
 export default function Detail(props) {
     console.log(props.match.params.chrisId,"利用Id拿后端数据 ------动态路由")
