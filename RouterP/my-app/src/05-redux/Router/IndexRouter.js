@@ -6,6 +6,7 @@ import Center from '../views/Center'
 import NotFund from './../views/NotFound'
 import Detail from '../views/Detail'
 import Login from './../views/Login'
+import City from '../views/City'
 
 function isAuth (){
     return localStorage.getItem("token")
@@ -30,7 +31,7 @@ export default function indexRouter(props) {
                     {/* <Route path='/detail' component={Detail}></Route> */}
 
                     {/* <Route path="/films/nowplaying" component={NowPlaying}></Route> */}
-
+                    <Route path="/city" component={City}></Route>
 
                     <Route path="/center" render={(props)=>{
                         // console.log(props)
