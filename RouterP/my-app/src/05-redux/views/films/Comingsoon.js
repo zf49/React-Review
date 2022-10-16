@@ -19,8 +19,8 @@ export default function Comingsoon() {
 
     return (
         <div>
-            {comingsoonList.map((item)=>{
-                return <ComingSoonFilm {...item}/>
+            {comingsoonList.map((item,index)=>{
+                return <ComingSoonFilm key={index} {...item}/>
             })}
         </div>
     )

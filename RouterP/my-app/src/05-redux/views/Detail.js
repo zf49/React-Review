@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { hide, show } from '../redux/actionCreator/TabbarActionCreator'
 import store from './../redux/store'
 
 export default function Detail(props) {
@@ -8,12 +9,9 @@ export default function Detail(props) {
 
     
     useEffect(() => {
-        store.dispatch({
-            type:"hide-tabbar"
-        })
-        console.log("create")
+        store.dispatch(hide())
         return ()=>{
-            console.log("destory")
+            store.dispatch(show())
         }
     }, [])    
 

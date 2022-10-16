@@ -3,7 +3,7 @@ import IndexRouter from './Router/IndexRouter'
 
 import Tabbar from './Components/Tabbar'
 import'./../04-router/views/css/App.css'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import store from './redux/store'
 
@@ -11,9 +11,15 @@ import store from './redux/store'
 
 function App() {
 
+  const [isShow, setisShow] = useState(store.getState().show)
+
+
+
   useEffect(() => {
     store.subscribe(()=>{
-      console.log("app 中订阅")
+      console.log("app 中订阅",store.getState())
+
+      setisShow(store.getState().show)
     })
     
   }, [])
@@ -25,7 +31,8 @@ function App() {
 
 
      <IndexRouter>
-        <Tabbar></Tabbar>
+
+       {isShow&&<Tabbar></Tabbar>}
      </IndexRouter>
 
 
