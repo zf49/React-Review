@@ -7,6 +7,7 @@ import NotFund from './../views/NotFound'
 import Detail from '../views/Detail'
 import Login from './../views/Login'
 import City from '../views/City'
+import Search from '../views/Search'
 
 function isAuth (){
     return localStorage.getItem("token")
@@ -38,10 +39,18 @@ export default function indexRouter(props) {
                       return  isAuth()?<Center {...props}></Center> :<Redirect to="/login"></Redirect>
                     }}></Route>
 
+                    
+
+
+
 
                     <Route path='/login' component={Login}></Route>
 
-                    <Route path='/cinemas' component={Cinemas}></Route>
+                    <Route path='/cinemas' component={Cinemas} exact></Route>
+
+                    <Route path='/cinemas/search' component={Search}></Route>
+
+
                     <Route path='/center' component={Center}></Route>
                     <Redirect from="/" to="/films" exact></Redirect>
                     <Route component={NotFund}></Route>

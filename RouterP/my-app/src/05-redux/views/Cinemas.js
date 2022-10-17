@@ -24,28 +24,50 @@ export default function Cinemas(props) {
             // use data from chache
             console.log("store,缓存")   
         }
-        store.subscribe(()=>{
+        let unsubscribe = store.subscribe(()=>{
             console.log("cinemas subscribe",store.getState().CinemaListReducer.cinema)  
             
             setcinemaList(store.getState().CinemaListReducer.cinema)
         })
 
-        
+        return ()=>{
+            console.log("销毁")
+            unsubscribe()
+        }
     }, [])
 
 
 
     return (
-        <div onClick={()=>{
+        <div>
+      <div style={{
+          overflow:'hidden'
+      }}>
+            <div onClick={()=>{
             props.history.push(`/city`)
+        }} style={{
+            float:'left'
         }}>
-            Cinemas-component
 
             <h1>{cityName}</h1>
+            </div>
 
-            <hr></hr>
-            <br></br>
-            <h1>CinemaName</h1>
+            <div style={{
+                float:'right'
+            }} onClick={()=>{
+                props.history.push(`/cinemas/search`)
+            }}><h1>Search</h1>
+            </div>
+
+
+
+            </div>
+
+            <div>
+        
+            
+            
+            <div>
             {cinemaList.map((item)=>{
                 return <dl key={item.cinemaId} style={{
                     padding:"10px"
@@ -59,5 +81,7 @@ export default function Cinemas(props) {
 
             })}
         </div>
+      </div>
+      </div>
     )
 }
