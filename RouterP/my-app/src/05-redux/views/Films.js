@@ -16,8 +16,8 @@ export default function Films() {
             }}>carousel</div>
 
             <ul>
-                <li><NavLink to='/films/nowplaying' activeClassName={style.chrisactive}>正在热映</NavLink></li>
-                <li><NavLink to='/films/comingsoon' activeClassName={style.chrisactive}>即将上映</NavLink></li>
+                <li><NavLink to='/films/nowplaying' activeClassName={style.chrisactive}>Now Showing</NavLink></li>
+                <li><NavLink to='/films/comingsoon' activeClassName={style.chrisactive}>Coming Soon</NavLink></li>
             </ul>
             
             {/* Router config */}

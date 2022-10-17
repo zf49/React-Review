@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     store.subscribe(()=>{
-      console.log("app 中订阅",store.getState())
+      // console.log("app 中订阅",store.getState())
 
       setisShow(store.getState().TabbarReducer.show)
     })

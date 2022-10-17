@@ -1,4 +1,4 @@
-import { combineReducers, legacy_createStore as createStore} from 'redux'
+import { applyMiddleware, combineReducers, legacy_createStore as createStore} from 'redux'
 
 // const reducer = (preState={
 //     show:true,
@@ -33,11 +33,18 @@ import CityReducer from './reducer/CityReducer'
 
 import TabbarReducer from './reducer/TabbarRdeucer'
 
+import CinemaListReducer from './../redux/reducer/CinemaListReducer'
+
+import reduxThunk from 'redux-thunk'
+
+
+
+
 const reducer = combineReducers({CityReducer,
-TabbarReducer})
+TabbarReducer,CinemaListReducer})
 
 
-const store = createStore(reducer);
+const store = createStore(reducer,applyMiddleware(reduxThunk));
 
 // function createChirsStore(reducer){
 //     let list = []

@@ -4,8 +4,6 @@ const TabbarReducer = (preState={
     console.log(action)
     let newState = {...preState}
 
-
-
     switch (action.type) {
         case "hide-tabbar":
             newState.show=false    
