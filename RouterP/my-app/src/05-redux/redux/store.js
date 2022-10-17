@@ -36,6 +36,7 @@ import TabbarReducer from './reducer/TabbarRdeucer'
 import CinemaListReducer from './../redux/reducer/CinemaListReducer'
 
 import reduxThunk from 'redux-thunk'
+import reduxPromise from 'redux-promise'
 
 
 
@@ -44,7 +45,7 @@ const reducer = combineReducers({CityReducer,
 TabbarReducer,CinemaListReducer})
 
 
-const store = createStore(reducer,applyMiddleware(reduxThunk));
+const store = createStore(reducer,applyMiddleware(reduxThunk,reduxPromise));
 
 // function createChirsStore(reducer){
 //     let list = []
