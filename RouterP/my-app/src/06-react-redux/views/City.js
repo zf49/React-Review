@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import cities from 'cities.json';
 import store from './../redux/store'
 import cityname from './../redux/actionCreator/CityActionCreater'
-import CityReducer from './../redux/reducer/CityReducer'
+
 
 export default function City(props) {
 

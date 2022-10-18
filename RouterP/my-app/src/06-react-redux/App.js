@@ -7,19 +7,17 @@ import { useEffect, useState } from 'react'
 
 import store from './redux/store'
 
+import {connect} from 'react-redux'
 
 
-function App() {
+function App(props) {
 
-  const [isShow, setisShow] = useState(store.getState())
 
 
 
   useEffect(() => {
     store.subscribe(()=>{
-      // console.log("app 中订阅",store.getState())
-
-      setisShow(store.getState().TabbarReducer.show)
+      console.log(props)
     })
     
   }, [])
@@ -32,7 +30,7 @@ function App() {
 
      <IndexRouter>
 
-       {isShow&&<Tabbar></Tabbar>}
+       {props.isShow&&<Tabbar></Tabbar>}
      </IndexRouter>
 
 
@@ -41,4 +39,15 @@ function App() {
   )
 }
 
-export default App;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    a:1,
+    b:2,
+    isShow:state.TabbarReducer.show
+  }
+
+}
+
+
+
+export default connect(mapStateToProps)(App);
