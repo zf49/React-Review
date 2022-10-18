@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import cities from 'cities.json';
-import store from './../redux/store'
-import cityname from './../redux/actionCreator/CityActionCreater'
 
 
-export default function City(props) {
+import {connect} from 'react-redux'
+
+ function City(props) {
 
 
     const [cityNames] = useState(cities.slice(0,20))
@@ -14,14 +14,14 @@ export default function City(props) {
 
 
 
-   function toCinemaWithCityName (name){
-    //    console.log(name)
+//    function toCinemaWithCityName (name){
+//     //    console.log(name)
 
-    store.dispatch(cityname(name))
+//     store.dispatch(cityname(name))
 
-    console.log(name)
-        props.history.push(`/cinemas`)
-    }
+//     console.log(name)
+//         props.history.push(`/cinemas`)
+//     }
 
 
     return (
@@ -29,8 +29,8 @@ export default function City(props) {
             {/* {console.log(cityNames)} */}
             {cityNames.map((item,index)=>{
               return <li key={index} onClick={()=>{
-
-                  toCinemaWithCityName(item.name)
+                    props.cityname(item.name)
+                    props.history.push(`/cinemas`)
               }}>{item.name}</li>
             })}
            
@@ -38,3 +38,15 @@ export default function City(props) {
         </div>
     )
 }
+
+
+const mapDispatchToProps = {
+    cityname(name){
+        return {
+            type: "changecity",
+            ctname:name
+        }
+    }
+}
+
+export default connect(null,mapDispatchToProps)( City)

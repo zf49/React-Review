@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from 'react'
 
-import store from './../redux/store'
 import getCinemaListAction from './../redux/actionCreator/cinemaListAction'
 
-export default function Cinemas(props) {
+import {connect} from 'react-redux'
 
-    const [cityName] = useState(store.getState().CityReducer.cityName)
 
-    const [cinemaList, setcinemaList] = useState(store.getState().CinemaListReducer.cinema)
+
+
+
+ function Cinemas(props) {
+
+    let {list,getCinemaListAction} = props
+
+
+    // const [cityName] = useState(store.getState().CityReducer.cityName)
+
+    // const [cinemaList, setcinemaList] = useState(store.getState().CinemaListReducer.cinema)
 
 
 
@@ -15,26 +23,21 @@ export default function Cinemas(props) {
 
         // console.log(store.getState().CinemaListReducer.cinema)
 
-        if(store.getState().CinemaListReducer.cinema.length === 0){
+        if(list.length === 0){
             // get the data from back-end
             // in actionCreator write the async function to request the data 
-            store.dispatch(getCinemaListAction())
+            // store.dispatch(getCinemaListAction())
+           getCinemaListAction()
 
         }else{
             // use data from chache
             console.log("store,缓存")   
         }
-        let unsubscribe = store.subscribe(()=>{
-            console.log("cinemas subscribe",store.getState().CinemaListReducer.cinema)  
-            
-            setcinemaList(store.getState().CinemaListReducer.cinema)
-        })
+     
+    
 
-        return ()=>{
-            console.log("销毁")
-            unsubscribe()
-        }
-    }, [])
+   
+    }, [list,getCinemaListAction])
 
 
 
@@ -49,7 +52,7 @@ export default function Cinemas(props) {
             float:'left'
         }}>
 
-            <h1>{cityName}</h1>
+            <h1>{props.cityName}</h1>
             </div>
 
             <div style={{
@@ -68,7 +71,7 @@ export default function Cinemas(props) {
             
             
             <div>
-            {cinemaList.map((item)=>{
+            {props.list.map((item)=>{
                 return <dl key={item.cinemaId} style={{
                     padding:"10px"
                 }}>
@@ -85,3 +88,19 @@ export default function Cinemas(props) {
       </div>
     )
 }
+
+
+const mapStateToProps = (state) => {
+    return {
+        list: state.CinemaListReducer.cinema,
+        cityName: state.CityReducer.cityName
+    }
+}
+
+
+
+const mapDispatchToProps = {
+    getCinemaListAction
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Cinemas) 
