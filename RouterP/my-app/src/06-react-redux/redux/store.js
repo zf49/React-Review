@@ -1,33 +1,4 @@
-import { applyMiddleware, combineReducers, legacy_createStore as createStore,compose} from 'redux'
-
-// const reducer = (preState={
-//     show:true,
-//     cityName:"Beijing"
-// }, action)=>{
-//     console.log(action)
-//     let newState = {...preState}
-
-
-
-//     switch (action.type) {
-//         case "hide-tabbar":
-//             newState.show=false    
-//             return newState
-//         case "show-tabbar":
-//             newState.show=true    
-//             return newState
-        
-//         case "changecity":
-//             newState.cityName=action.ctname
-//             return newState
-//         default:
-
-//             return preState
-//     }
-
-//     // newState
-
-// }
+import { applyMiddleware, combineReducers,compose,legacy_createStore as createStore} from 'redux'
 
 import CityReducer from './reducer/CityReducer'
 
@@ -39,47 +10,31 @@ import reduxThunk from 'redux-thunk'
 import reduxPromise from 'redux-promise'
 
 
+import { persistStore, persistReducer } from 'redux-persist'
+
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+
+
+const persistConfig = {
+    key: 'root',
+    storage,
+    withlist:['CityReducer']
+  }
+
+
+  const reducer = combineReducers({CityReducer,
+    TabbarReducer,CinemaListReducer})
+
+  const persistedReducer = persistReducer(persistConfig, reducer)
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+ const store = createStore( 
+    persistedReducer, 
+    composeEnhancers(applyMiddleware(reduxThunk,reduxPromise)))
 
-const reducer = combineReducers({CityReducer,
-TabbarReducer,CinemaListReducer})
-
-const store = createStore(reducer, composeEnhancers(applyMiddleware(reduxThunk,reduxPromise)));
-
-// const store = createStore(reducer,applyMiddleware(reduxThunk,reduxPromise));
-
-// function createChirsStore(reducer){
-//     let list = []
-//     let state = reducer(undefined,{})
-
-
-//     function subscribe(callback){
-//         list.push(callback)
-//     }
-
-//     function dispatch(action){
-//         state = reducer(state,action)
-//         for(let i in list){
-//             list[i] && list[i]()
-//         }
-//     }
-
-//     function getState(){
-//         return state
-//     }
-
-//     return{
-//         subscribe,
-//         dispatch,
-//         getState
-//     }
-
-// }
+let persistor = persistStore(store)
 
 
 
-
-
-
-export default store
+export {store,persistor}

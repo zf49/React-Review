@@ -5,7 +5,7 @@ import Tabbar from './Components/Tabbar'
 import './views/css/App.css'
 import { useEffect, useState } from 'react'
 
-import store from './redux/store'
+import {store} from './redux/store'
 
 import {connect} from 'react-redux'
 
