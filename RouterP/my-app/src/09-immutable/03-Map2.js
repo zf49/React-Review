@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 import {Map} from 'immutable'
 
@@ -35,15 +35,23 @@ export default function App() {
     return (
         <div>
             {info.get('tree').get('c').get('a').get('c')}
-            <Child complicated={info.get('filter')}></Child>
+            <Child complicated={info.get('tree')}></Child>
         </div>
     )
 }
 
  function Child(props) {
+
+    useMemo(() => {
+        if(props  === props){
+
+        }
+    }, [])
+
+
     return (
         <div>
-            child-{props.complicated.get('up')}
+            child-{props.complicated.get('a').get('a')}
         </div>
     )
 }
