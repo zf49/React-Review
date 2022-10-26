@@ -2,7 +2,7 @@ export default {}
 
 
 let test1 = (a:string,b:number)=>{
-    a.substring(0,1)+b
+    // a.substring(0,1)+b
 }
 test1("123",123)
 
