@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 
-import {increment, decrement,reset} from './counterSlice'
+import {increment, decrement,reset,incremntByAmount} from './counterSlice'
 import Test from './test'
+
+
+
 
 export const Counter = () => {
 
@@ -11,6 +14,15 @@ export const Counter = () => {
 
     const dispatch = useDispatch();
 
+    const [incremnetAmount, setIncremnetAmount] = useState(0)
+    
+    
+    const addValue = Number(incremnetAmount) || 0
+    
+        const restAll = ()=>{
+            setIncremnetAmount(0)
+            dispatch(reset())
+        }
 
     return (
         <section>
@@ -28,6 +40,28 @@ export const Counter = () => {
             <div><button onClick={()=>{
                dispatch(reset())
             }}>reset</button></div>
+
+
+<br></br>
+            <hr></hr>
+
+            <input type="text" value={incremnetAmount} onChange={(e)=>{
+                setIncremnetAmount(e.target.value)
+            }}></input>
+
+
+            
+            <div>
+                <button onClick={()=>{
+                   return dispatch(incremntByAmount(addValue))
+                }}>asd</button>
+                <button onClick={()=>{
+                   return restAll()
+                }}>reset</button>
+
+
+            </div>
+
 
         </section>
     )
