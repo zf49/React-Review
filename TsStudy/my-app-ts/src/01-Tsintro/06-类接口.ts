@@ -1,5 +1,5 @@
 export default {}
-
+// 接口规范-对象需要其约束保证不会出bug
 interface Ifunc{
     getName:()=>string,
     getAge:()=>number

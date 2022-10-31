@@ -1,10 +1,12 @@
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import  "./01-Tsintro/01-基本类型";
-import  './01-Tsintro/02-数组'
-import './01-Tsintro/03-Object'
-import './01-Tsintro/04-function'
-import './01-Tsintro/05-class'
+import App from './02-classTs/03-props';
+// import  "./01-Tsintro/01-基本类型";
+// import  './01-Tsintro/02-数组'
+// import './01-Tsintro/03-Object'
+// import './01-Tsintro/04-function'
+// import './01-Tsintro/05-class'
+
+
 
 
 const root = ReactDOM.createRoot(
