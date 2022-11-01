@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import App from './03-functionTs/04-抽屉';
+import App from './04-router/App';
 // import  "./01-Tsintro/01-基本类型";
 // import  './01-Tsintro/02-数组'
 // import './01-Tsintro/03-Object'
@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   // <React.StrictMode>
-    <App />
+      <App />
   // </React.StrictMode>
 );
 
