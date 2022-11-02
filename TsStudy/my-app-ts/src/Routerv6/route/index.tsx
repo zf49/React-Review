@@ -7,6 +7,7 @@ import Cinema from '../view/Cinema'
 import ComingSoon from '../view/ComingSoon'
 import Detail from '../view/Detail'
 import Film from '../view/Film'
+import Login from '../view/Login'
 import NotFound from '../view/NotFound'
 import NowPlaying from '../view/NowPlaying'
 import Search from '../view/Search'
@@ -15,6 +16,17 @@ import Search from '../view/Search'
 
 
 export default function MRouter() {
+
+
+    function isAuth(){
+
+
+
+        return localStorage.getItem('token')
+    }
+
+
+
     return (
         <Routes>
               
@@ -35,11 +47,22 @@ export default function MRouter() {
             </Route>
 
 
+            <Route path='/login' element={<Login/>}></Route>
+
+
+
 
 
                <Route path='/cinemas' element={<Cinema/>}></Route>
               
-               <Route path='/center' element={<Center/>}></Route>
+              // 路由拦截，写成3目运算，执行验证方法后判断是否应该跳转
+
+               <Route path='/center' element={<AuthComponent>
+                   <Center></Center>
+               </AuthComponent>}></Route>
+
+
+
 
                <Route path='/center/search' element={<Search/>}></Route>
 
@@ -58,4 +81,23 @@ export default function MRouter() {
 
             </Routes>
     )
+}
+
+
+interface IProps{
+    children:React.ReactNode;
+}
+
+
+
+// 路由拦截组件的封装
+function AuthComponent(props:IProps){
+
+    const isLogin = localStorage.getItem('token')
+
+    return <>
+        {isLogin?props.children:<Navigate to='/login'></Navigate>}
+    </>
+
+
 }
