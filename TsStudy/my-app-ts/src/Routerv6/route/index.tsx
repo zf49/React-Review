@@ -5,6 +5,7 @@ import {HashRouter, Route} from 'react-router-dom'
 import Center from '../view/Center'
 import Cinema from '../view/Cinema'
 import ComingSoon from '../view/ComingSoon'
+import Detail from '../view/Detail'
 import Film from '../view/Film'
 import NotFound from '../view/NotFound'
 import NowPlaying from '../view/NowPlaying'
@@ -42,7 +43,13 @@ export default function MRouter() {
 
                <Route path='/center/search' element={<Search/>}></Route>
 
+
+
+               <Route path='/detail' element={<Detail/>}></Route>
+
                <Route path='/' element={<Navigate to='/films'/>}></Route>
+
+
 
                <Route path='*' element={<NotFound/>}></Route>
 

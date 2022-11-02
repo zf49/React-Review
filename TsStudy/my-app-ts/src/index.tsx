@@ -5,6 +5,7 @@ import App from './Routerv6/App';
 // import './01-Tsintro/03-Object'
 // import './01-Tsintro/04-function'
 // import './01-Tsintro/05-class'
+import 'antd/dist/antd.css'
 
 
 
