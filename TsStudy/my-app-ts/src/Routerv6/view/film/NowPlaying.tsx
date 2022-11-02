@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import FilmItem from './FilmItem'
 
 export default function NowPlaying() {
 
@@ -56,9 +57,7 @@ export default function NowPlaying() {
             NowPlaying
             <hr></hr>
             {films.map((item:IItem)=>{
-                return <li key={item.filmId} onClick={()=>{
-                    toDetail(item.filmId)
-                }}>{item.name}</li>
+                return <FilmItem key={item.filmId} {...item}></FilmItem>
             })}
         </div>
     )

@@ -2,7 +2,7 @@
 
 
 
-import {HashRouter} from 'react-router-dom' 
+import {HashRouter,BrowserRouter} from 'react-router-dom' 
 import TabBar from './Component/TabBar'
 import MRouter from './route/index'
 
@@ -12,7 +12,7 @@ const { Header, Content, Footer } = Layout;
 
 export default function App() {
     return (
-       <HashRouter>
+       <BrowserRouter>
                <Content style={{ padding: '0 50px' }}>
 
            <MRouter></MRouter>
@@ -20,6 +20,6 @@ export default function App() {
            <Footer style={{ textAlign: 'center' }}>
            <TabBar/>
            </Footer>
-       </HashRouter>
+       </BrowserRouter>
     )
 }
