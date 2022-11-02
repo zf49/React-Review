@@ -1,4 +1,5 @@
 import React from 'react'
+import { useRoutes } from 'react-router-dom'
 import { Routes,Navigate } from 'react-router-dom'
 
 import {HashRouter, Route} from 'react-router-dom' 
@@ -17,11 +18,54 @@ import {HashRouter, Route} from 'react-router-dom'
 
 export default function MRouter() {
 
-
+    const element = useRoutes([
+        {
+            path:"/films",
+            element:lazyload("Film"),
+            children:[
+                {
+                    path:"nowplaying",  
+                    element:lazyload("film/NowPlaying")
+                },
+                {
+                    path:'',
+                    element:<Navigate to="/films/nowplaying"></Navigate>
+                },
+                {
+                    path:'comingsoon',
+                    element:lazyload("film/ComingSoon")
+                }
+            ]
+        },
+        {
+            path:"/cinemas",
+            element:lazyload("Cinema")
+        },
+        {
+            path:'/login',
+            element:lazyload('Login')
+        },
+        {
+            path:"/center",
+            element:<AuthComponent>
+                        {lazyload("Center")}
+                    </AuthComponent>
+        },
+        {
+            path:"/detail/:id",
+            element:lazyload("Detail")
+        },
+        {
+            path:"/search",
+            element:lazyload("Search")
+        }
+        
+    ])
 
     return (
-        <div></div>
-              
+        <>
+        {element}
+        </>
     )
 }
 
