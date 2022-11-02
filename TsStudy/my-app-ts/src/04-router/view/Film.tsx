@@ -12,7 +12,7 @@ interface IItem{
 
 }
 
-export default function Film(props:any) {
+export default function Film() {
 
 
     const [films, setfilms] = useState([])
@@ -38,10 +38,9 @@ export default function Film(props:any) {
     let navigate = useNavigate()
   
     function toDetails(id:number){
-        console.log(props.history)
 
 
-        navigate(`/film/${id}`,{replace:true})
+        navigate(`/detail/${id}`)
 
     }   
 

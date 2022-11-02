@@ -18,7 +18,7 @@ export default function IndexRouter() {
 
                 <Route path='/center' element={<Center/>}/>
 
-                    <Route path='/detail/:chrisId' element={<Details/>}></Route>
+                <Route path='/detail/:chrisId' element={<Details/>}/>
 
 
                 <Route path='/' element={<Navigate to='/film'></Navigate>}></Route>
