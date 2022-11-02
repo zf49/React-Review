@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import App from './04-router/App';
+import App from './Routerv6/App';
 // import  "./01-Tsintro/01-基本类型";
 // import  './01-Tsintro/02-数组'
 // import './01-Tsintro/03-Object'
