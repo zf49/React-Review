@@ -10,16 +10,18 @@ export default function IndexRouter() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/film' element={<Film />} />
+                <Route path='/film' element={<Film />} >
+                    
+                </Route>
 
                 <Route path='/cinema' element={<Cinema/>}/>
 
                 <Route path='/center' element={<Center/>}/>
 
-                <Route path='/film/:id' children={<Details/>}/>
+                    <Route path='/detail/:chrisId' element={<Details/>}></Route>
 
 
-                {/* <Route path='*' element={<Navigate to='/film'></Navigate>}></Route> */}
+                <Route path='/' element={<Navigate to='/film'></Navigate>}></Route>
 
 
             </Routes>
