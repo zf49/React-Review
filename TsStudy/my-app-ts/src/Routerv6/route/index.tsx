@@ -44,8 +44,8 @@ export default function MRouter() {
                <Route path='/center/search' element={<Search/>}></Route>
 
 
-
-               <Route path='/detail' element={<Detail/>}></Route>
+                // 动态路由
+               <Route path='/detail/:id' element={<Detail/>}></Route>
 
                <Route path='/' element={<Navigate to='/films'/>}></Route>
 

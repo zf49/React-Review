@@ -17,7 +17,7 @@ export default function NowPlaying() {
             },
             method:"get"
         }).then((res)=>{
-            console.log(res.data.data.films)
+            // console.log(res.data.data.films)
 
 
             setfilms(res.data.data.films)
@@ -32,7 +32,13 @@ export default function NowPlaying() {
         console.log(id)
         // 跳转页面
         // query 传参 ?id=...
-        navigate(`/detail?id=${id}`)
+        // navigate(`/detail?id=${id}`)
+
+
+        // restful 路由传参
+        navigate(`/detail/${id}`)
+
+
 
     }
 
