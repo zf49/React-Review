@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import App from './06-unitest/App';
+import App from './07-replenish/portal/App';
 // import  "./01-Tsintro/01-基本类型";
 // import  './01-Tsintro/02-数组'
 // import './01-Tsintro/03-Object'
