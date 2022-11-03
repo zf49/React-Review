@@ -3,7 +3,7 @@ import {Route,BrowserRouter,Routes,Navigate} from'react-router-dom'
 import Center from '../view/Center'
 import Cinema from '../view/Cinema'
 import Details from '../view/Details'
-import Film from './../view/Film'
+import Film from '../view/Film'
 
 
 export default function IndexRouter() {
