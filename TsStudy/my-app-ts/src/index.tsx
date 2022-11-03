@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import App from './07-replenish/Lazy/App';
+import App from './07-replenish/forwardRef/App_forward';
 // import  "./01-Tsintro/01-基本类型";
 // import  './01-Tsintro/02-数组'
 // import './01-Tsintro/03-Object'
