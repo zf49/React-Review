@@ -1,6 +1,4 @@
-## React-Review
-first day: 
+## React-Review + Advanced tech
 
-basic knowledge contains class component / functional component / nested compoenet / css style in component
 
 
