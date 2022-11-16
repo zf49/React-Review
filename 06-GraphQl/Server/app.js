@@ -20,7 +20,9 @@ var schema = buildSchema(`
   type Query {
     hello: String,
     getName:String,
-    getAge:Int
+    getAge:Int,
+    getAllNames:[String],
+    getAllAges:[Int]
   }
 `);
 
@@ -34,6 +36,12 @@ var root = {
   },
   getAge:()=>{
     return 26
+  },
+  getAllNames:()=>{
+      return ["asd",'123123','zxcsfg','sdfgj']
+  },
+  getAllAges:()=>{
+      return [1,54,345,5467,4678,56,34,234,234,23,42,34]
   }
 };
 
