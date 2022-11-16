@@ -13,16 +13,63 @@ let homeRouter = require('./routes/homeRouter')
 let listRouter = require('./routes/listRouter')
 
 
+var fakeDb=[{
+  id:1,
+  name:'111',
+  poster:"http://111",
+  price:100
+},
+{
+  id:2,
+  name:'222',
+  poster:"http://222",
+  price:200
+},
+{
+  id:3,
+  name:'333',
+  poster:"http://333",
+  price:300
+},{
+  id:4,
+  name:'444',
+  poster:"http://444",
+  price:400
+},
+{
+  id:5,
+  name:'555',
+  poster:"http://555",
+  price:500
+}]
 
 
 
+   // getFilmDetail感叹号意思是必须传的参数
 var schema = buildSchema(`
+
+type Account{
+  name:String,
+  age:Int,
+  arr:[String]
+}
+
+  type Film{
+    id:Int,
+    name:String,
+    poster:String,
+    price:Int
+  }
+
   type Query {
     hello: String,
     getName:String,
     getAge:Int,
     getAllNames:[String],
-    getAllAges:[Int]
+    getAllAges:[Int],
+    getAccountInfo: Account,
+    getNowPlayingList:[Film],
+    getFilmDetail(id:Int!):Film
   }
 `);
 
@@ -42,6 +89,20 @@ var root = {
   },
   getAllAges:()=>{
       return [1,54,345,5467,4678,56,34,234,234,23,42,34]
+  },
+  getAccountInfo:()=>{
+    return {
+      name:"chris",
+      age:26,
+      arr:["asd",'zxc','vbn']
+    }
+  },
+  getNowPlayingList(){
+    return fakeDb
+  },
+  getFilmDetail({id}){
+      console.log(id)
+      return fakeDb.filter(item=>item.id===id)[0]
   }
 };
 
