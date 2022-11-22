@@ -48,14 +48,102 @@
 
     function createData(){
         
+        const myquery =`mutation($input:FilmInput){
+            createFilm(input:$input) {
+                id,
+                name
+            } 
+
+        }`
+
+
+
+        fetch("/graphql",{
+        method:"post",
+        headers:{
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+        },
+        body:JSON.stringify({
+            query:myquery,
+            variables:{
+                input:{
+                    price:666,
+                name:"JS_TEST",
+                poster:"http://JS_TEST"
+                }
+               
+            }
+        })
+    
+    }).then(res=>res.json()).then(res=>{console.log(res)})
     }
+    
 
     function updateData(){
         
+        const myquery =`mutation($id:String!,$input:FilmInput){
+            updateFilm(id:$id,input:$input) {
+                id,
+                name
+            }
+        }`
+
+
+
+        fetch("/graphql",{
+        method:"post",
+        headers:{
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+        },
+        body:JSON.stringify({
+            query:myquery,
+            variables:{
+                id:"637c315b73ef236a55c22d17",
+                input:{
+                    price:9999,
+                name:"JS_TEST_测试Update",
+                poster:"http://JS_TEST_测试update"
+                }
+               
+            }
+        })
+    
+    }).then(res=>res.json()).then(res=>{console.log(res)})
+
+
+
     }
 
     function deleteData(){
         
+
+              
+        const myquery =`mutation($id:String!){
+                deleteFilm(id:$id)
+                }`
+
+
+
+        fetch("/graphql",{
+        method:"post",
+        headers:{
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+        },
+        body:JSON.stringify({
+            query:myquery,
+            variables:{
+                id:"637c315b73ef236a55c22d17"  
+            }
+        })
+    
+    }).then(res=>res.json()).then(res=>{console.log(res)})
+
+
+
+
     }
 
 
