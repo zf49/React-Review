@@ -3,11 +3,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 
+
+
+
+
+
 let FilmModel  = require('./db/filmschema')
 
 var logger = require('morgan');
 var { graphqlHTTP } = require('express-graphql');
 var { buildSchema } = require('graphql');
+
+
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -78,7 +86,8 @@ type Account{
     getAllNames:[String],
     getAllAges:[Int],
     getAccountInfo: Account,
-    getNowPlayingList:[Film],
+    
+    getNowPlayingList(id:String!):[Film],
     getFilmDetail(id:Int!):Film
   }
 
@@ -117,8 +126,11 @@ var root = {
       arr:["asd",'zxc','vbn']
     }
   },
-  getNowPlayingList(){
-    return FilmModel.find()
+  // getNowPlayingList(){
+  //   return FilmModel.find()
+  // },
+  getNowPlayingList({id}){
+    return FilmModel.find({_id:id})
   },
   getFilmDetail({id}){
       console.log(id)
@@ -149,6 +161,12 @@ var root = {
 };
 
 var app = express();
+
+
+
+const cors = require('cors');
+
+app.use(cors())
 
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
