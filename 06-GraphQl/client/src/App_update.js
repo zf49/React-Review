@@ -17,7 +17,7 @@ function App() {
 
     <ApolloProvider client={client}>
       <div>
-        <ChrisDelete></ChrisDelete>
+        <ChrisUpdate></ChrisUpdate>
       </div>
     </ApolloProvider>
 
@@ -27,11 +27,15 @@ function App() {
 
 
 
- function ChrisDelete() {
+ function ChrisUpdate() {
 
-  const deleteFilm = gql`
-  mutation deleteFilm($id:String!){
-    deleteFilm(id:$id) 
+  const updateFilm = gql`
+  mutation updateFilm($id:String!,$input:FilmInput){
+    updateFilm(id:$id,input:$input) {
+      id,
+      name,
+      price
+    } 
   }`
 
   
@@ -43,17 +47,22 @@ function App() {
 
      <h1>Update</h1>
 
-      <Mutation mutation={deleteFilm}>
+      <Mutation mutation={updateFilm}>
       {
-          (deleteFilm,{data})=>{
+          (updateFilm,{data})=>{
             console.log(data)
             return <div><button onClick={()=>{
-              deleteFilm({
+              updateFilm({
                   variables:{
-                    id:"637c516cbd4d55e00612a23b"
+                    id:"637c501abd4d55e00612a239",
+                    input:{
+                        name:"777-修改",
+                        poster:"http://777——修改1111",
+                        price:77
+                    }
                   }
               })
-            }}>delete</button></div>
+            }}>update</button></div>
           }
 
       }

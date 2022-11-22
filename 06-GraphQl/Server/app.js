@@ -149,8 +149,7 @@ var root = {
   return FilmModel.updateOne({
       _id:id},{...input})
 
-
-
+  
   },
 
   deleteFilm({id}){
