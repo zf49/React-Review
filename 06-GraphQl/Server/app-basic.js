@@ -2,9 +2,6 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-
-let FilmModel  = require('./db/filmschema')
-
 var logger = require('morgan');
 var { graphqlHTTP } = require('express-graphql');
 var { buildSchema } = require('graphql');
@@ -58,7 +55,7 @@ type Account{
 }
 
   type Film{
-    id:String,
+    id:Int,
     name:String,
     poster:String,
     price:Int
@@ -85,9 +82,9 @@ type Account{
   type Mutation{
     createFilm(input:FilmInput):Film,
     
-    updateFilm(id:String!,input:FilmInput):Film,
+    updateFilm(id:Int!,input:FilmInput):Film,
 
-    deleteFilm(id:String!):Int
+    deleteFilm(id:Int!):Int
   }
 
 
@@ -118,7 +115,7 @@ var root = {
     }
   },
   getNowPlayingList(){
-    return FilmModel.find()
+    return fakeDb
   },
   getFilmDetail({id}){
       console.log(id)
@@ -127,22 +124,23 @@ var root = {
 
 
   createFilm({input}){
-    return FilmModel.create({
-         ...input
-     })
+      var obj = {...input,id:fakeDb.length+1}
+
+      fakeDb.push(obj)
+
+      return obj
 
   },
   updateFilm({id,input}){
 
-  return FilmModel.updateOne({
-      _id:id},{...input})
+    console.log(id,input)
 
 
 
   },
 
   deleteFilm({id}){
-     return FilmModel.deleteOne({_id:id}).then(res=>1)
+      console.log(id)
   }
 
 

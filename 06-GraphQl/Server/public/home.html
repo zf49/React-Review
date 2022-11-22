@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+
+
+<h1>HOME</h1>
+
+<button onclick="getData()">查询数据</button>
+
+<button onclick="createData()">创建数据</button>
+<button onclick="updateData()">更新数据</button>
+<button onclick="deleteData()">删除数据</button>
+
+
+
+
+<script>
+
+    function getData(){
+
+        const myquery = `query{
+                getNowPlayingList{
+                    name,
+                    id
+                }
+            }`
+
+
+
+        fetch("/graphql",{
+        method:"post",
+        headers:{
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+        },
+        body:JSON.stringify({
+            query:myquery
+        })
+    
+    }).then(res=>res.json()).then(res=>{console.log(res)})
+    }
+
+    function createData(){
+        
+    }
+
+    function updateData(){
+        
+    }
+
+    function deleteData(){
+        
+    }
+
+
+</script>
+
+
+
+</body>
+</html>
