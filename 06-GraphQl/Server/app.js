@@ -130,6 +130,9 @@ var root = {
   //   return FilmModel.find()
   // },
   getNowPlayingList({id}){
+    if(!id){
+      return FilmModel.find()
+    }
     return FilmModel.find({_id:id})
   },
   getFilmDetail({id}){
