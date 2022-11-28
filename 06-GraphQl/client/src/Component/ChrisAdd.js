@@ -6,7 +6,7 @@ import{Mutation} from 'react-apollo'
 
 
 
-export default function ChrisAdd() {
+export default function ChrisAdd(props) {
 
     const createFilm = gql`
     mutation createFilm($input:FilmInput){
@@ -17,30 +17,39 @@ export default function ChrisAdd() {
       } 
     }`
   
-    
+    let nameRef = React.createRef()
+    let posterRef = React.createRef()
+    let priceRef = React.createRef()
   
     
   
     return (
       <div>
   
-       <h1>create</h1>
+       
   
         <Mutation mutation={createFilm}>
         {
             (createFilm,{data})=>{
               console.log(data)
-              return <div><button onClick={()=>{
+              return <div>
+                  <p>Name:<input ref={nameRef} type="text"/></p>
+                  <p>Pic:<input ref={posterRef} type="text"/></p>
+                  <p>Price:<input ref={priceRef} type="number"/></p>
+
+
+                  <button onClick={()=>{
                 createFilm({
                     variables:{
                       input:{
-                          name:"777",
-                          poster:"http://777",
-                          price:777
+                          name:nameRef.current.value,
+                          poster:posterRef.current.value,
+                          price:Number(priceRef.current.value)
                       }
                     }
-                })
-              }}>asdasdasd</button></div>
+                }).then(res=>props.cb())
+                console.log(nameRef.current.value)
+              }}>Click</button></div>
             }
   
         }

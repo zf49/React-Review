@@ -6,9 +6,9 @@ import React, { useState } from 'react'
 import{gql} from 'graphql-tag'
 import{Query} from 'react-apollo'
 
+import ChrisDelete from './ChrisDelete'
 
-
-export default function ChrisQuery() {
+export default function ChrisQuery(props) {
 
     const query = gql`
     query getNowPlayingList ($id:String!){
@@ -29,20 +29,29 @@ export default function ChrisQuery() {
     return (
       <div>
   
-        <input type='text' onChange={(evt)=>{
+        {/* <input type='text' onChange={(evt)=>{
   
           setstate({id:evt.target.value})
   
-        }}></input>
+        }}></input> */}
   
   
   
   
         <Query query={query} variables={{id:state.id}}> 
-          {({loading,data})=>{
+          {({loading,data,refetch})=>{
               console.log(data)
+
+            props.fetch(refetch)
+
+
               return loading?<div>loading...</div>:<div>{data.getNowPlayingList.map(((item)=>{
-                  return <li key={item.id}>{item.name}</li>
+                  return <div style={{border:'1px solid black',padding:"20px"}}><ul><li key={item.id}><b>Name: </b>{item.name}</li>
+                    <li><b>Price: </b>{item.price}</li>
+                    <ChrisDelete cb={()=>{
+                        refetch()
+                    }} id={item.id}></ChrisDelete>
+                  </ul></div>
               }))
               
               

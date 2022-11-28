@@ -16,11 +16,23 @@ const client = new ApolloClient({
 
 
 function App() {
+
+  let refetch = null
+
+
   return (
 
     <ApolloProvider client={client}>
-      <ChrisAdd/>
-      <ChrisQuery/>
+
+      <h1>Film CRUD</h1>
+      <ChrisAdd cb={()=>{
+        refetch() //let ChrisQuery request again
+      }}/>
+      <ChrisQuery fetch={(reload)=>{
+          refetch = reload
+
+          console.log(refetch)
+      }}/>
     </ApolloProvider>
 
 
